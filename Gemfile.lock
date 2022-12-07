@@ -1,6 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    RubyInline (3.12.6)
+      ZenTest (~> 4.3)
+    ZenTest (4.12.1)
     actioncable (7.0.4)
       actionpack (= 7.0.4)
       activesupport (= 7.0.4)
@@ -68,6 +71,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
+    batch-loader (2.0.1)
     bindex (0.8.1)
     bootsnap (1.15.0)
       msgpack (~> 1.2)
@@ -86,7 +90,12 @@ GEM
     debug (1.7.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    diff-lcs (1.5.0)
     erubi (1.11.0)
+    faker (3.0.0)
+      i18n (>= 1.8.11, < 2)
+    fuzzy-string-match (1.0.1)
+      RubyInline (>= 3.8.6)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -126,7 +135,7 @@ GEM
     nokogiri (1.13.9-x64-mingw-ucrt)
       racc (~> 1.4)
     pg (1.4.5-x64-mingw-ucrt)
-    public_suffix (5.0.0)
+    public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.1)
@@ -160,10 +169,28 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    redis (4.8.0)
     regexp_parser (2.6.1)
     reline (0.3.1)
       io-console (~> 0.5)
     rexml (3.2.5)
+    rspec-core (3.12.0)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-rails (6.0.1)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.11)
+      rspec-expectations (~> 3.11)
+      rspec-mocks (~> 3.11)
+      rspec-support (~> 3.11)
+    rspec-support (3.12.0)
     rubyzip (2.3.2)
     selenium-webdriver (4.7.1)
       rexml (~> 3.2, >= 3.2.5)
@@ -209,14 +236,19 @@ PLATFORMS
   x64-mingw-ucrt
 
 DEPENDENCIES
+  batch-loader
   bootsnap
   capybara
   debug
+  faker
+  fuzzy-string-match
   importmap-rails
   jbuilder
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)
+  redis (~> 4.0)
+  rspec-rails
   selenium-webdriver
   sprockets-rails
   stimulus-rails
